@@ -20,7 +20,7 @@
 
 
 
-void fft(Complex *x, Complex *ret, int N, int inverse) { 
+static void fft(Complex *x, Complex *ret, int N, int inverse) { 
     int logn = log2(N); 
     assert((1 << logn) == N); 
     for(int i = 0, j = 0;i < N;i ++) { 
@@ -53,7 +53,7 @@ void fft(Complex *x, Complex *ret, int N, int inverse) {
     }
 }
 
-void dft(Complex *x, Complex* ret, int N, int inverse) { 
+inline void dft(Complex *x, Complex* ret, int N, int inverse) { 
     for(int i = 0;i < N;i ++) { 
         for(int j = 0;j < N;j ++) { 
             double angle = (inverse ? 2 : -2) * PI * i * j / N;
